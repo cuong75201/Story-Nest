@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1320" viewBox="0 0 2000 1320" role="img" aria-labelledby="title desc">
+  <title id="title">Story Nest — Entity Relationship Diagram</title>
+  <desc id="desc">PostgreSQL entity relationship diagram for Story Nest.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; } .line { stroke: #94a3b8; stroke-width: 2; fill: none; }
+      .box { fill: #ffffff; stroke: #64748b; stroke-width: 1.5; rx: 10; }
+      .head { fill: #1e3a5f; rx: 10; } .entity { font: 700 18px Arial, sans-serif; fill: white; }
+      .field { font: 14px Arial, sans-serif; fill: #334155; } .key { fill: #0369a1; font-weight: bold; }
+      .note { font: 13px Arial, sans-serif; fill: #64748b; } .label { font: 12px Arial, sans-serif; fill: #475569; }
+      .title { font: 700 32px Arial, sans-serif; fill: #0f172a; }
+    </style>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect class="bg" width="2000" height="1320"/>
+  <text x="60" y="58" class="title">Story Nest — PostgreSQL ERD</text>
+  <text x="60" y="84" class="note">PK = primary key · FK = foreign key · UK = unique · đường mũi tên chỉ đến bảng được tham chiếu</text>
+
+  <!-- Relationship lines, rendered first so entity cards stay readable. -->
+  <g class="line" marker-end="url(#arrow)">
+    <path d="M350 250 H450"/><path d="M650 250 H760"/>
+    <path d="M650 310 H715 V500 H760"/><path d="M960 310 V500"/>
+    <path d="M350 300 H450 V630 H760"/><path d="M350 360 H450 V760 H760"/>
+    <path d="M240 380 V630 H450"/><path d="M240 380 V760 H450"/>
+    <path d="M350 1000 H450"/><path d="M650 1000 H760"/><path d="M960 1000 H1060"/>
+    <path d="M350 1130 H560 V1000 H760"/><path d="M350 1130 H560 V1130 H760"/>
+    <path d="M350 500 H450"/><path d="M650 500 H760"/><path d="M650 500 H715 V630 H760"/>
+    <path d="M960 630 H1060"/><path d="M1260 630 H1370"/>
+    <path d="M1260 760 H1370"/><path d="M1260 760 H1320 V890 H1370"/>
+    <path d="M1260 890 H1370"/><path d="M1570 630 H1680"/>
+  </g>
+  <g class="label">
+    <text x="382" y="242">owner_id</text><text x="690" y="242">story_id</text><text x="680" y="490">story_id</text>
+    <text x="1010" y="485">genre_id</text><text x="500" y="620">story_id</text><text x="500" y="750">story_id</text>
+    <text x="383" y="992">user_id</text><text x="695" y="992">story_id</text><text x="1000" y="992">chapter_id</text>
+    <text x="470" y="1122">follower_id</text><text x="665" y="1122">following_id</text>
+    <text x="383" y="492">author_id</text><text x="690" y="492">story_id</text><text x="690" y="622">chapter_id</text>
+    <text x="1000" y="622">story_id</text><text x="1300" y="622">user_id</text><text x="1300" y="752">story_id</text>
+    <text x="1300" y="882">story_id / chapter_id / comment_id</text><text x="1600" y="622">recipient_id</text>
+  </g>
+
+  <!-- Entity cards -->
+  <g transform="translate(60 140)"><rect class="box" width="290" height="240"/><rect class="head" width="290" height="42"/><text class="entity" x="18" y="27">USERS</text><text class="field key" x="18" y="70">PK  id · UUID</text><text class="field" x="18" y="98">UK  email</text><text class="field" x="18" y="124">UK  username</text><text class="field" x="18" y="150">role · USER | ADMIN</text><text class="field" x="18" y="176">status · ACTIVE | SUSPENDED</text><text class="field" x="18" y="202">display_name, avatar_url, bio</text></g>
+  <g transform="translate(450 140)"><rect class="box" width="200" height="170"/><rect class="head" width="200" height="42"/><text class="entity" x="18" y="27">STORIES</text><text class="field key" x="18" y="70">PK id · UUID</text><text class="field" x="18" y="96">FK owner_id</text><text class="field" x="18" y="122">title, slug (UK)</text><text class="field" x="18" y="148">visibility, state, status</text></g>
+  <g transform="translate(760 140)"><rect class="box" width="200" height="170"/><rect class="head" width="200" height="42"/><text class="entity" x="18" y="27">CHAPTERS</text><text class="field key" x="18" y="70">PK id · UUID</text><text class="field" x="18" y="96">FK story_id</text><text class="field" x="18" y="122">chapter_number</text><text class="field" x="18" y="148">title, content, status</text></g>
+  <g transform="translate(1060 140)"><rect class="box" width="200" height="170"/><rect class="head" width="200" height="42"/><text class="entity" x="18" y="27">GENRES</text><text class="field key" x="18" y="70">PK id · UUID</text><text class="field" x="18" y="96">UK name</text><text class="field" x="18" y="122">UK slug</text><text class="field" x="18" y="148">description, is_active</text></g>
+  <g transform="translate(760 500)"><rect class="box" width="200" height="130"/><rect class="head" width="200" height="42"/><text class="entity" x="18" y="27">STORY_GENRES</text><text class="field key" x="18" y="70">PK/FK story_id</text><text class="field key" x="18" y="98">PK/FK genre_id</text></g>
+  <g transform="translate(450 630)"><rect class="box" width="200" height="130"/><rect class="head" width="200" height="42"/><text class="entity" x="18" y="27">STORY_FOLLOWS</text><text class="field key" x="18" y="70">PK/FK user_id</text><text class="field key" x="18" y="98">PK/FK story_id</text></g>
+  <g transform="translate(450 760)"><rect class="box" width="200" height="130"/><rect class="head" width="200" height="42"/><text class="entity" x="18" y="27">STORY_FAVORITES</text><text class="field key" x="18" y="70">PK/FK user_id</text><text class="field key" x="18" y="98">PK/FK story_id</text></g>
+  <g transform="translate(60 880)"><rect class="box" width="290" height="120"/><rect class="head" width="290" height="42"/><text class="entity" x="18" y="27">READING_PROGRESS</text><text class="field key" x="18" y="70">PK/FK user_id, story_id</text><text class="field" x="18" y="96">FK chapter_id, position</text></g>
+  <g transform="translate(760 880)"><rect class="box" width="200" height="120"/><rect class="head" width="200" height="42"/><text class="entity" x="18" y="27">USER_FOLLOWS</text><text class="field key" x="18" y="70">PK/FK follower_id</text><text class="field key" x="18" y="96">PK/FK following_id</text></g>
+  <g transform="translate(60 1040)"><rect class="box" width="290" height="180"/><rect class="head" width="290" height="42"/><text class="entity" x="18" y="27">COMMENTS</text><text class="field key" x="18" y="70">PK id · UUID</text><text class="field" x="18" y="96">FK author_id, parent_id</text><text class="field" x="18" y="122">FK story_id XOR chapter_id</text><text class="field" x="18" y="148">body, status</text></g>
+  <g transform="translate(450 1040)"><rect class="box" width="200" height="120"/><rect class="head" width="200" height="42"/><text class="entity" x="18" y="27">RATINGS</text><text class="field key" x="18" y="70">PK/FK user_id</text><text class="field key" x="18" y="96">PK/FK story_id · score</text></g>
+  <g transform="translate(760 1040)"><rect class="box" width="300" height="140"/><rect class="head" width="300" height="42"/><text class="entity" x="18" y="27">STORY_VIEWS</text><text class="field key" x="18" y="70">PK id · UUID</text><text class="field" x="18" y="96">FK story_id, chapter_id</text><text class="field" x="18" y="122">FK user_id (nullable)</text></g>
+  <g transform="translate(1060 500)"><rect class="box" width="200" height="130"/><rect class="head" width="200" height="42"/><text class="entity" x="18" y="27">NOTIFICATIONS</text><text class="field key" x="18" y="70">PK id · UUID</text><text class="field" x="18" y="96">FK recipient_id, actor_id</text></g>
+  <g transform="translate(1370 500)"><rect class="box" width="280" height="180"/><rect class="head" width="280" height="42"/><text class="entity" x="18" y="27">REPORTS</text><text class="field key" x="18" y="70">PK id · UUID</text><text class="field" x="18" y="96">FK reporter_id, handled_by</text><text class="field" x="18" y="122">FK story/chapter/comment</text><text class="field" x="18" y="148">reason, status</text></g>
+  <g transform="translate(1680 500)"><rect class="box" width="220" height="120"/><rect class="head" width="220" height="42"/><text class="entity" x="18" y="27">NOTIFICATION ACTOR</text><text class="field" x="18" y="72">actor_id → USERS</text><text class="note" x="18" y="98">nullable system event</text></g>
+  <text x="60" y="1280" class="note">Nguồn: backend/database/migrations/001_initial_schema.sql · ERD chi tiết dạng Mermaid: backend/database/ERD.md</text>
+</svg>
