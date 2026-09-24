@@ -52,3 +52,14 @@ class StoryOut(StoryBase):
     published_at: datetime | None
     created_at: datetime
     updated_at: datetime
+
+
+class StoryCountOut(SchemaOut):
+    count: int
+
+
+class StoryListOut(SchemaOut):
+    items: list[StoryOut]
+    total: int
+    page: int
+    page_size: int

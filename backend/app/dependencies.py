@@ -1,10 +1,8 @@
-from typing import Annotated
+from typing import Annotated, TypeAlias
+
 from fastapi import Depends
-from sqlmodel import Session
-from .database import engine
+from sqlalchemy.orm import Session
 
-def get_session():
-    with Session(engine) as session:
-        yield session
+from app.database import get_db
 
-SessionDep = Annotated[Session, Depends(get_session)]
+SessionDep: TypeAlias = Annotated[Session, Depends(get_db)]
