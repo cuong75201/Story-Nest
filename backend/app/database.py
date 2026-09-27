@@ -1,8 +1,8 @@
 """PostgreSQL connection setup for the Story Nest API."""
 
 import os
+from collections.abc import Generator
 from pathlib import Path
-from typing import Generator
 
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
@@ -18,7 +18,7 @@ if not database_url:
 # SQLAlchemy needs the psycopg v3 driver name. Keep either common PostgreSQL URL form usable.
 if database_url.startswith("postgresql://"):
     database_url = database_url.replace("postgresql://", "postgresql+psycopg://", 1)
-    
+
 
 engine = create_engine(database_url, pool_pre_ping=True)
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)

@@ -4,12 +4,16 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from app.database import engine
 from app.exceptions import register_exception_handlers
+from app.routers.genres import router as genres_router
+from app.routers.homeslots import router as homeslots_router
 from app.routers.stories import router as stories_router
 from app.schemas import ApiResponse, success_response
 
 app = FastAPI(title="Story Nest API")
 register_exception_handlers(app)
 app.include_router(stories_router)
+app.include_router(genres_router)
+app.include_router(homeslots_router)
 
 
 @app.get("/health", response_model=ApiResponse[dict[str, str]])

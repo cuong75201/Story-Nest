@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_standard" name="shell-type" />
+    <title>V-Novel - Thế giới truyện chữ</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        @layer base {
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                overscroll-behavior: none;
+            }
+
+            main>:first-child {
+                margin-top: 0 !important;
+            }
+
+            main>:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script
+        id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-error": "#ffffff", "tertiary": "#000000", "surface-container": "#eeeeed", "surface-bright": "#f9f9f8", "inverse-surface": "#2f3130", "surface-container-low": "#f3f4f3", "secondary-fixed-dim": "#ffb77d", "secondary-container": "#fe932c", "tertiary-fixed-dim": "#68dba9", "surface-variant": "#e2e2e2", "on-tertiary-fixed-variant": "#005137", "on-tertiary-container": "#069669", "surface": "#f9f9f8", "outline": "#76777d", "outline-variant": "#c6c6cd", "on-background": "#1a1c1c", "error": "#ba1a1a", "primary": "#000000", "primary-fixed-dim": "#bec6e0", "on-tertiary-fixed": "#002114", "secondary": "#904d00", "tertiary-container": "#002114", "on-secondary-container": "#663500", "background": "#f9f9f8", "on-secondary-fixed-variant": "#6e3900", "tertiary-fixed": "#85f8c4", "on-primary-container": "#7c839b", "on-secondary": "#ffffff", "on-error-container": "#93000a", "surface-dim": "#dadad9", "primary-container": "#131b2e", "error-container": "#ffdad6", "secondary-fixed": "#ffdcc3", "inverse-primary": "#bec6e0", "primary-fixed": "#dae2fd", "surface-container-high": "#e8e8e7", "surface-container-lowest": "#ffffff", "surface-container-highest": "#e2e2e2", "on-surface": "#1a1c1c", "inverse-on-surface": "#f1f1f0", "on-primary-fixed": "#131b2e", "surface-tint": "#565e74", "on-primary-fixed-variant": "#3f465c", "on-primary": "#ffffff", "on-tertiary": "#ffffff", "on-secondary-fixed": "#2f1500", "on-surface-variant": "#45464d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "space-lg": "1.5rem", "margin-tablet": "2rem", "margin": "1rem", "space-xl": "2.5rem", "space-xs": "0.25rem", "margin-desktop": "3rem", "space-sm": "0.5rem", "gutter-desktop": "1.5rem", "gutter": "1rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "reader-chapter-title": ["Literata"], "display-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "reader-body": ["Literata"], "label-sm": ["Plus Jakarta Sans"], "reader-body-dense": ["Literata"], "label-md": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "metadata-badge": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"] }, "fontSize": { "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }], "reader-chapter-title": ["1.75rem", { "lineHeight": "2.25rem", "fontWeight": "700" }], "display-lg": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.025em", "fontWeight": "800" }], "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "fontWeight": "600" }], "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" }], "reader-body": ["1.1875rem", { "lineHeight": "2.125rem", "letterSpacing": "0.005em", "fontWeight": "400" }], "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "600" }], "reader-body-dense": ["1.0625rem", { "lineHeight": "1.875rem", "fontWeight": "400" }], "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-xl-mobile": ["1.625rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.015em", "fontWeight": "700" }], "headline-lg": ["1.5rem", { "lineHeight": "2rem", "fontWeight": "600" }], "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" }], "metadata-badge": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.04em", "fontWeight": "700" }], "headline-xl": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }] } } } };</script>
+</head>
+
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+        <div
+            class="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 lg:gap-space-md">
+            <div class="flex items-center gap-3 lg:gap-space-lg shrink-0"><!-- Mobile Hamburger Button --><button
+                    aria-label="Mở danh mục điều hướng"
+                    class="lg:hidden p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+                    type="button"><span class="material-symbols-outlined text-[24px]">menu</span></button><a
+                    class="flex items-center gap-space-sm group text-decoration-none" data-path="kham-pha" href="#"><img
+                        alt="Modern minimalist emblem logo for a web novel publishing and reading platform named 'V-Novel'. An elegant open book seamlessly combined with a sleek fountain pen nib tip, clean geometric lines, dark indigo ink and warm gold accent, transparent background vector SVG aesthetic."
+                        class="h-8 w-auto object-contain"
+                        src="https://lh3.googleusercontent.com/aida/AEtjO1UB9eRWQ8tRzkM5IlujV1-Ms-jPAXe2ZFg3SmjMNd-qTTxNiqlS73liRCsPAYWoufPqKJRBvH0PFoBUuyqtbYqef8tmA3K6USjof3Q3V5LqVetyJ_J9yQQKGq8O_3iD85-XLFrR78aEcElz6vHhQj_h6TN6iH22dZdEDTDhFXu_vzKbA65sbHVB2O6Ie-J3n0V5NO34d-Z75m3Z0-f45Q8xSK2PyRCPkVwOi4J8Og7puEMirnbTrgoxWQ" />
+                    <div class="flex flex-col"><span
+                            class="font-headline-lg text-headline-lg text-primary tracking-tight leading-none">V-Novel</span><span
+                            class="font-label-sm text-label-sm text-on-surface-variant font-normal leading-none mt-1 hidden xs:inline">Thế
+                            giới truyện chữ</span></div>
+                </a>
+                <nav class="hidden lg:flex items-center gap-3 xl:gap-space-md shrink-0"
+                    data-active-classes="text-primary font-bold"><a aria-current="page"
+                        class="transition-colors py-space-xs text-primary font-bold text-sm xl:text-base whitespace-nowrap"
+                        data-path="kham-pha" href="#">Khám Phá</a><a
+                        class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs whitespace-nowrap text-sm xl:text-base"
+                        data-path="bang-xep-hang" href="#">Bảng Xếp Hạng</a>
+                    <div class="relative group"><a
+                            class="inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs whitespace-nowrap text-sm xl:text-base"
+                            data-path="the-loai" href="#"><span>Thể Loại</span><span
+                                class="material-symbols-outlined text-[16px]">expand_more</span></a></div><a
+                        class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs whitespace-nowrap text-sm xl:text-base"
+                        data-path="tu-sach" href="#">Tủ Sách</a><a
+                        class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors py-space-xs whitespace-nowrap text-sm xl:text-base"
+                        data-path="dien-dan" href="#">Diễn Đàn</a>
+                </nav>
+            </div>
+            <div class="flex-1 max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg hidden md:block mx-2 lg:mx-space-sm">
+                <div
+                    class="relative flex items-center w-full bg-surface-container-low rounded-xl px-3 lg:px-space-md py-space-xs focus-within:bg-surface-container-lowest focus-within:shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all">
+                    <span
+                        class="material-symbols-outlined text-outline mr-2 lg:mr-space-sm text-[20px] shrink-0">search</span><input
+                        class="w-full bg-transparent border-0 outline-none font-body-sm text-body-sm text-on-surface placeholder:text-outline truncate"
+                        placeholder="Tìm kiếm tác phẩm, tác giả, thể loại... (Ctrl + K)" type="text" /><span
+                        class="font-label-sm text-label-sm text-outline bg-surface-container px-space-xs py-0.5 rounded font-medium select-none shrink-0 ml-2 hidden xl:inline-block">Ctrl
+                        K</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-3 lg:gap-space-md shrink-0"><a
+                    class="inline-flex items-center gap-1.5 sm:gap-space-xs bg-primary text-on-primary font-label-md text-label-md px-3 sm:px-space-md py-2 sm:py-2.5 rounded-lg shadow-[0_1px_3px_rgba(15,23,42,0.04)] hover:bg-surface-container-high hover:text-on-surface transition-all whitespace-nowrap"
+                    data-path="sang-tac" href="#"><span
+                        class="material-symbols-outlined text-[18px]">edit_note</span><span
+                        class="hidden sm:inline">Sáng Tác</span></a>
+                <div class="relative"><button aria-label="Thông báo"
+                        class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors relative"
+                        type="button"><span
+                            class="material-symbols-outlined text-[20px] sm:text-[22px]">notifications</span><span
+                            class="absolute top-2 right-2 w-2 h-2 bg-secondary-container rounded-full ring-2 ring-surface"></span></button>
+                </div>
+                <div class="flex items-center gap-1.5 sm:gap-space-sm pl-1 cursor-pointer group"><img alt="Profile"
+                        class="w-8 h-8 rounded-full object-cover shrink-0"
+                        src="https://lh3.googleusercontent.com/aida/AEtjO1UEKRqRhIwOnmBjVdWhEYTdEMvxpmAbnL9LErCARxX6YZJJimBfABFjR_QxSxbFUP2uwPG3Doy6nIORKewS6N9UvkL7Hy9KPch4LNRdIWlex8OpsVbuY3GfDQOF_zzRwVp3KY884dVQLabsZkvO2vJfqVObDBQMvSs_lGcGmE8gIAg7Q7vMb2su6Gi3dGFtRAITz_WEA70z7EciBXXTJoQyV35bvlFatMvX2jyBKcESfmob71SFH_9CTMM" /><span
+                        class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors hidden xl:inline-block truncate max-w-[90px]">Minh
+                        Nhật</span><span
+                        class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface text-[18px] hidden sm:inline-block">keyboard_arrow_down</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="w-full pt-20 bg-surface flex-1">
+        <div class="flex flex-col w-full">
+            <!-- Sub-Navbar / Quick Genre & Filter Strip with Smooth Horizontal Scroll -->
+
+            <!-- Content Container -->
+            <div
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-space-lg w-full flex flex-col gap-8 sm:gap-space-xl">
+                <!-- Hero Spotlight & Continue Reading Row -->
+                <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 xl:gap-8 items-stretch">
+                    <!-- Main Spotlight Banner (Left 8 Cols) -->
+                    <div
+                        class="lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-md p-5 sm:p-space-lg relative overflow-hidden flex flex-col justify-between group">
+                        <div
+                            class="absolute -right-16 -bottom-16 w-80 h-80 bg-gradient-to-br from-secondary-container/10 via-primary/5 to-transparent rounded-full blur-3xl pointer-events-none">
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-5 sm:gap-6 items-center sm:items-start relative z-10">
+                            <!-- Responsive Novel Cover -->
+                            <div
+                                class="w-40 sm:w-44 md:w-48 xl:w-56 shrink-0 aspect-[2/3] rounded-xl overflow-hidden shadow-lg relative bg-surface-container-high">
+                                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    data-alt="Epic cinematic cover of an eastern fantasy novel titled Van Co De Nhat Than, a mystical warrior surrounded by nine celestial cosmic dragons, golden glowing runes, dark indigo ink backdrop with warm amber lighting, rich painterly aesthetic"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeJIteCNdc7_vwcGtkac2BwTqOM0g2YxI9am2EGQNw1Jo1gXSQ2a0FijDrtRd7v0th3Gkh09wjHBwiJdVUAKmAqaLb_G6mCkZcUPmMzSpdEWHYd8bl6iamJMbvm_Bd0ATmSr2Z8GPtF_91JYEveiHcSXzUYc5L7JoKvUVF0AO_A4fRRCn3TQ_m9n_OurFsBgqAI29CrcsJBDDpPxoJh0lJ06a_6vGshjAP7aBglD2IB7jyVJ68iLG6" />
+                                <div
+                                    class="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-primary font-metadata-badge text-metadata-badge shadow-sm uppercase tracking-wider">
+                                    VIP Đề Cử
+                                </div>
+                                <div
+                                    class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-primary/80 to-transparent p-2.5 sm:p-space-sm pt-6 text-on-primary">
+                                    <span class="font-label-sm text-label-sm font-semibold">1,820 Chương</span>
+                                </div>
+                            </div>
+                            <!-- Spotlight Metadata & Synopsis -->
+                            <div class="flex-1 min-w-0 flex flex-col justify-between py-1 text-center sm:text-left">
+                                <div>
+                                    <div class="flex items-center justify-center sm:justify-start gap-2 mb-2 flex-wrap">
+                                        <span
+                                            class="px-2.5 py-0.5 rounded-full bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant font-medium">Huyền
+                                            Huyễn Kỳ Bí</span>
+                                        <span
+                                            class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">Đang
+                                            Ra</span>
+                                        <div
+                                            class="flex items-center gap-1 text-secondary-container sm:ml-auto font-label-sm text-label-sm font-bold">
+                                            <span class="material-symbols-outlined text-[16px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span>4.9</span>
+                                            <span class="text-on-surface-variant font-normal">(14,290 đánh giá)</span>
+                                        </div>
+                                    </div>
+                                    <h2
+                                        class="font-headline-xl text-2xl sm:text-headline-xl text-primary tracking-tight font-extrabold mb-1">
+                                        Vạn Cổ Đệ Nhất Thần
+                                    </h2>
+                                    <p
+                                        class="font-label-md text-label-md text-on-surface-variant mb-3 flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                                        <span>Tác giả: <strong class="text-on-surface">Phong Thanh Dương</strong></span>
+                                        <span class="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
+                                        <span>1.2M Lượt đọc</span>
+                                    </p>
+                                    <p
+                                        class="font-body-md text-body-md text-on-surface-variant line-clamp-3 leading-relaxed mb-5">
+                                        Lý Thiên Mệnh kéo theo mười đầu Thái Cổ Hỗn Độn Cự Thú, từ Đông Hoàng tông quật
+                                        khởi! Một thanh kiếm phá vạn pháp, đạp khắp chư thiên vạn giới, chấp chưởng quy
+                                        tắc luân hồi. Sinh mệnh vô tận, nghịch thiên cải mệnh, ngạo thị hoàn vũ cửu
+                                        tiêu...
+                                    </p>
+                                </div>
+                                <!-- Action CTAs -->
+                                <div
+                                    class="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 sm:gap-space-md pt-1">
+                                    <a class="inline-flex items-center justify-center gap-2 px-4 sm:px-space-lg py-2.5 sm:py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-bold shadow-md hover:bg-surface-container-high hover:text-on-surface transition-all flex-1 sm:flex-none"
+                                        href="#">
+                                        <span class="material-symbols-outlined text-[20px]"
+                                            style="font-variation-settings: 'FILL' 1;">menu_book</span>
+                                        <span>Đọc Ngay Chương 1</span>
+                                    </a>
+                                    <button
+                                        class="inline-flex items-center justify-center gap-2 px-3 sm:px-space-md py-2.5 sm:py-3 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-variant transition-colors flex-1 sm:flex-none">
+                                        <span class="material-symbols-outlined text-[18px]">bookmark_add</span>
+                                        <span>Thêm vào Tủ Sách</span>
+                                    </button>
+                                    <button
+                                        class="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-colors shrink-0"
+                                        title="Chia sẻ tác phẩm">
+                                        <span class="material-symbols-outlined text-[20px]">share</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right Column: Continue Reading & Editor Picks (Right 4 Cols) -->
+                    <div class="lg:col-span-4 flex flex-col gap-4 sm:gap-space-md justify-between">
+                        <!-- Đang Đọc Dở (Continue Reading Floating Card) -->
+                        <div
+                            class="bg-primary-container text-on-primary rounded-xl p-space-md shadow-md relative overflow-hidden flex flex-col justify-between">
+                            <div class="flex items-center justify-between mb-space-sm">
+                                <span
+                                    class="inline-flex items-center gap-1.5 font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-wider font-bold">
+                                    <span class="material-symbols-outlined text-[16px]">history</span>
+                                    Đang Đọc Dở
+                                </span>
+                                <span
+                                    class="font-metadata-badge text-metadata-badge bg-surface-container-lowest/15 px-2 py-0.5 rounded text-on-primary">Tiến
+                                    độ 68%</span>
+                            </div>
+                            <div class="flex gap-space-md items-center mb-space-sm min-w-0">
+                                <div class="w-14 h-20 rounded bg-surface-container shrink-0 overflow-hidden shadow">
+                                    <img class="w-full h-full object-cover"
+                                        data-alt="Book cover of Pham Nhan Tu Tien novel showing a solitary taoist cultivator looking toward misty mountains and ancient temples with jade ink aesthetic"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlivi-Y0JFbNLaVUdiffTE30jwP7vvVezjkK1Fn6H1Ad5AmrB29lxSy0iUSD8rZn0HrWr9EsT7IVlJPo7m6BbpPE1jpzQ7Bs_TGNa4tgSC8AzA7q7_zXt0w5NL9g5_5zpV7kh38EXEv6MG0OfpWxg51PP7ad1mFdemZrcOKf6yQr50Kp0-xjUDjOw_47QE9bLERvx6amTY8CReu1J854ZzOTxk_rQcluhmlvTJr-oUDPTakR4iQrto" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="font-headline-md text-body-lg font-bold text-on-primary truncate">Phàm
+                                        Nhân Tu Tiên</h3>
+                                    <p class="font-body-sm text-body-sm text-on-primary-container mb-1.5 truncate">
+                                        Chương 342: Hắc Sát Ma Tông Tái Xuất</p>
+                                    <!-- Progress Bar -->
+                                    <div
+                                        class="w-full bg-surface-container-lowest/20 h-1.5 rounded-full overflow-hidden">
+                                        <div class="bg-secondary-container h-full rounded-full" style="width: 68%;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="mt-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 font-label-md text-label-md text-on-primary font-medium transition-colors"
+                                href="#">
+                                <span>Đọc Tiếp</span>
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                            </a>
+                        </div>
+                        <!-- 2 Mini Editor Picks -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm flex-1 justify-center">
+                            <div class="flex items-center justify-between pb-1">
+                                <span
+                                    class="font-headline-md text-body-md font-bold text-primary flex items-center gap-1 truncate">
+                                    <span
+                                        class="material-symbols-outlined text-secondary-container text-[18px] shrink-0">verified</span>
+                                    <span>Lựa Chọn Của Ban Biên Tập</span>
+                                </span>
+                                <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary shrink-0 ml-2"
+                                    href="#">Xem thêm</a>
+                            </div>
+                            <!-- Mini Story Item 1 -->
+                            <div
+                                class="flex items-center gap-space-sm p-1.5 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer group min-w-0">
+                                <div class="w-12 h-16 rounded overflow-hidden shrink-0 shadow-sm">
+                                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                        data-alt="Novel cover of Quy Bi Chi Chu Lord of the Mysteries showing Victorian steampunk arcane symbols, vintage pocket watch, deep blue and copper palette"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnlubtp9yoy6Sxe8PL9QG5n9grZn3_-FWc-dQsQIBq7H60y75hQ2YUx7x_IM2QxL0Nr4Iv2TvQNh8QoouDLNuCY8xI13lEjXX5K0uKEI3m1UeyqT0v1OttafqAzJyHlP1-nJCfnyguwB7zB8vLZ-1RbL08dxMjQaGVMc7OnsCOWlsIBiKtjXym0fcAobh6eyFuiGvhduAFbOppQJEGCQYbqt-u9smymkJw3-zj-NGSJaJHr5lDYGgY" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <h4
+                                        class="font-label-md text-label-md font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                        Quỷ Bí Chi Chủ</h4>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Ái Tiềm Thủy
+                                        Đích Ô Tặc</p>
+                                    <div class="flex items-center gap-2 mt-0.5">
+                                        <span
+                                            class="font-label-sm text-[11px] px-1.5 py-0.2 bg-surface-container-high rounded text-on-surface-variant">Huyền
+                                            Bí</span>
+                                        <span class="font-label-sm text-[11px] text-secondary-container font-semibold">★
+                                            4.95</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mini Story Item 2 -->
+                            <div
+                                class="flex items-center gap-space-sm p-1.5 rounded-lg hover:bg-surface-container-low transition-colors cursor-pointer group min-w-0">
+                                <div class="w-12 h-16 rounded overflow-hidden shrink-0 shadow-sm">
+                                    <img class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                        data-alt="Novel cover of Kiem Lai showing a solitary swordsman walking through snowy bamboo forest with glowing sword intent, monochrome ink wash painting style"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0mB769T0lo6ILnm0hbzx-0SlNJnq7ItGICJM9ulSWaTXSvhD8FmZaoYK6u-rC1Q_DPZdTGVQBgF_WsjtKpyHcZhA6KDF6DO3do0AdhXfqZBszZ80q_Fa_51csVF1E9sO6vN8ZpsTwEtLGbdUK-LiUeBcBHyg83qCSM0gMwfs_qShAfgec7TVCNfuwRIoAIAzvcySzsEJcBHxOIMNBxGYFCkM9Y8qpC-U9i9TVeY_aNNGs4emFuTrY" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <h4
+                                        class="font-label-md text-label-md font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                        Kiếm Lai</h4>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant truncate">Phong Hỏa Hí
+                                        Chư Hầu</p>
+                                    <div class="flex items-center gap-2 mt-0.5">
+                                        <span
+                                            class="font-label-sm text-[11px] px-1.5 py-0.2 bg-surface-container-high rounded text-on-surface-variant">Tiên
+                                            Hiệp</span>
+                                        <span class="font-label-sm text-[11px] text-secondary-container font-semibold">★
+                                            4.92</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Main Responsive Grid: 8 Cols Left / 4 Cols Right, stacked gracefully on mobile/tablet -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 xl:gap-8 items-start">
+                    <!-- ================= LEFT COLUMN (8 Cols) ================= -->
+                    <div class="lg:col-span-8 flex flex-col gap-6 sm:gap-space-xl min-w-0">
+                        <!-- SECTION 1: Top Thịnh Hành (Trending Novels) 2 to 4-Card Responsive Grid -->
+                        <section class="flex flex-col gap-space-md">
+                            <div class="flex items-center justify-between flex-wrap gap-2">
+                                <div class="flex items-center gap-space-sm">
+                                    <div class="w-2.5 h-6 bg-secondary-container rounded-full"></div>
+                                    <h3
+                                        class="font-headline-lg text-lg sm:text-headline-lg text-primary font-bold tracking-tight">
+                                        Top Thịnh Hành</h3>
+                                </div>
+                                <div
+                                    class="flex items-center gap-space-xs font-label-md text-body-sm sm:text-label-md text-on-surface-variant">
+                                    <span class="cursor-pointer font-bold text-primary">Toàn nền tảng</span>
+                                    <span>/</span>
+                                    <span class="cursor-pointer hover:text-on-surface">Được mua nhiều</span>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+                                <!-- Trending Card #1 -->
+                                <div
+                                    class="bg-surface-container-lowest rounded-xl p-2.5 sm:p-space-sm flex flex-col shadow-sm hover:shadow-md transition-all group cursor-pointer relative min-w-0">
+                                    <div
+                                        class="relative aspect-[2/3] w-full rounded-xl overflow-hidden mb-space-sm bg-surface-container">
+                                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                            data-alt="Novel cover for Kiem Lai by Phong Hoa Hi Chu Hau showing a wandering youth with a straw hat and long wooden sword walking across green riverbanks, fine line art"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkUJI99cdwQ4gbu_pLYuZxXVSJjtNfixgGGmPQRHFO_7oS6Go46u-hkirC2JY83PlE5JwkjpJT6kb_D2qmTrgBOjw_4IxirGUbMjmsOHatKaUMSGOjpJhcBo176oX3_EORK7ODKtRVBt671iL0DXq4-kMdVVYVEmZSJDNgQAr_EhmLNZQWyozOw7NmdRdExVwgwmvUg634hp19r3im2Qtuoqvu3_ng37Pw7W1Hb-nVW-LdMshBV2JS" />
+                                        <span
+                                            class="absolute top-2 left-2 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-secondary-container text-on-primary font-label-md text-xs sm:text-label-md font-extrabold flex items-center justify-center shadow-md">
+                                            1
+                                        </span>
+                                        <span
+                                            class="absolute bottom-2 right-2 px-1.5 sm:px-2 py-0.5 rounded bg-inverse-surface/80 text-inverse-on-surface font-label-sm text-[11px] backdrop-blur-sm">
+                                            1,140C
+                                        </span>
+                                    </div>
+                                    <h4
+                                        class="font-headline-md text-sm sm:text-body-lg font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                        Kiếm Lai</h4>
+                                    <p class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant truncate">
+                                        Phong Hỏa Hí Chư Hầu</p>
+                                    <div
+                                        class="flex items-center justify-between mt-2 pt-2 border-t-0 bg-surface-container-low/50 -mx-2.5 -mb-2.5 sm:-mx-space-sm sm:-mb-space-sm px-2.5 sm:px-space-sm py-1.5 rounded-b-xl">
+                                        <div
+                                            class="flex items-center text-secondary-container text-label-sm font-semibold">
+                                            <span class="material-symbols-outlined text-[14px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="ml-0.5 text-xs sm:text-sm">4.9</span>
+                                        </div>
+                                        <span
+                                            class="font-metadata-badge text-[11px] text-on-surface-variant font-medium">Tiên
+                                            Hiệp</span>
+                                    </div>
+                                </div>
+                                <!-- Trending Card #2 -->
+                                <div
+                                    class="bg-surface-container-lowest rounded-xl p-2.5 sm:p-space-sm flex flex-col shadow-sm hover:shadow-md transition-all group cursor-pointer relative min-w-0">
+                                    <div
+                                        class="relative aspect-[2/3] w-full rounded-xl overflow-hidden mb-space-sm bg-surface-container">
+                                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                            data-alt="Novel cover for Lord of the Mysteries Quý Bí Chi Chủ featuring ancient silver tentacle glyphs, dark foggy London-esque Victorian streets, occult atmosphere"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZHeNVF9oshplDRdtyRX6zbikyfOShwCt5eXg5TIhM8uLMBV_gvx4V36gSCDeBSmKyETuTb9trp5BdcGJvW77WjjjDrWYlOWMWWSS2On8lrG_wVswZ38-m2TC159IXQiLpSgAZtg_p8oQa_5HETu2yL39VLMmTIB_QWV4crt6xp6ZscX6NwYDdHnKaSWAw836ujeSsnrpml1kp2rWQRySTfLdHqfqF_LO2ILLpmWpmwdcuMYeEiKgf" />
+                                        <span
+                                            class="absolute top-2 left-2 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-surface-container-highest text-on-surface font-label-md text-xs sm:text-label-md font-extrabold flex items-center justify-center shadow-md">
+                                            2
+                                        </span>
+                                        <span
+                                            class="absolute bottom-2 right-2 px-1.5 sm:px-2 py-0.5 rounded bg-inverse-surface/80 text-inverse-on-surface font-label-sm text-[11px] backdrop-blur-sm">
+                                            1,432C
+                                        </span>
+                                    </div>
+                                    <h4
+                                        class="font-headline-md text-sm sm:text-body-lg font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                        Quỷ Bí Chi Chủ</h4>
+                                    <p class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant truncate">Mực
+                                        Thích Lặn Nước</p>
+                                    <div
+                                        class="flex items-center justify-between mt-2 pt-2 border-t-0 bg-surface-container-low/50 -mx-2.5 -mb-2.5 sm:-mx-space-sm sm:-mb-space-sm px-2.5 sm:px-space-sm py-1.5 rounded-b-xl">
+                                        <div
+                                            class="flex items-center text-secondary-container text-label-sm font-semibold">
+                                            <span class="material-symbols-outlined text-[14px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="ml-0.5 text-xs sm:text-sm">4.95</span>
+                                        </div>
+                                        <span
+                                            class="font-metadata-badge text-[11px] text-on-surface-variant font-medium">Huyền
+                                            Huyễn</span>
+                                    </div>
+                                </div>
+                                <!-- Trending Card #3 -->
+                                <div
+                                    class="bg-surface-container-lowest rounded-xl p-2.5 sm:p-space-sm flex flex-col shadow-sm hover:shadow-md transition-all group cursor-pointer relative min-w-0">
+                                    <div
+                                        class="relative aspect-[2/3] w-full rounded-xl overflow-hidden mb-space-sm bg-surface-container">
+                                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                            data-alt="Novel cover for Da Dich Lac Nhi Dao showing cybernetic high tech futuristic cyberpunk megacity at night with neon lights and shadowy assassin silhouette"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCblLUbl9vcr0MDr1H92PFguv6ZPEKB29eebacrnknUCmXzIET4_3OqRvCuj5VjPeNMW_VITG1AfPzyc8-9NPKma0P6J0o6AURw1WBunnHBxqs4-JPIl4Z5wuN4w0rlyDWlDm2F0AkQZ8dx2B-BjSxRoojlM3qp86sXVeq5DxR-ms3doYCNotHqKwlKPf8h36jHpMitWiIAU_CW9TqWeTiHyqrJ_VzthlbS0OwaHzqx3OnQUmARNyYf" />
+                                        <span
+                                            class="absolute top-2 left-2 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-surface-container-highest text-on-surface font-label-md text-xs sm:text-label-md font-extrabold flex items-center justify-center shadow-md">
+                                            3
+                                        </span>
+                                        <span
+                                            class="absolute bottom-2 right-2 px-1.5 sm:px-2 py-0.5 rounded bg-inverse-surface/80 text-inverse-on-surface font-label-sm text-[11px] backdrop-blur-sm">
+                                            928C
+                                        </span>
+                                    </div>
+                                    <h4
+                                        class="font-headline-md text-sm sm:text-body-lg font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                        Dạ Đích Lạc Nhị Đao</h4>
+                                    <p class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant truncate">Hội
+                                        Thuyết Thoại Đích Trửu Tử</p>
+                                    <div
+                                        class="flex items-center justify-between mt-2 pt-2 border-t-0 bg-surface-container-low/50 -mx-2.5 -mb-2.5 sm:-mx-space-sm sm:-mb-space-sm px-2.5 sm:px-space-sm py-1.5 rounded-b-xl">
+                                        <div
+                                            class="flex items-center text-secondary-container text-label-sm font-semibold">
+                                            <span class="material-symbols-outlined text-[14px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="ml-0.5 text-xs sm:text-sm">4.88</span>
+                                        </div>
+                                        <span
+                                            class="font-metadata-badge text-[11px] text-on-surface-variant font-medium">Đô
+                                            Thị</span>
+                                    </div>
+                                </div>
+                                <!-- Trending Card #4 -->
+                                <div
+                                    class="bg-surface-container-lowest rounded-xl p-2.5 sm:p-space-sm flex flex-col shadow-sm hover:shadow-md transition-all group cursor-pointer relative min-w-0">
+                                    <div
+                                        class="relative aspect-[2/3] w-full rounded-xl overflow-hidden mb-space-sm bg-surface-container">
+                                        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                            data-alt="Novel cover for Dai Phung Da Canh Nhan historical court detective novel with ancient imperial guards holding lanterns in front of forbidden city palace gate at dusk"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPPGomV4dT87-E4hR1AuqBm2NFvytGNJps4cDCChyUM1jjA6IzNV8xhY8eh8XlNncw2fla0gDgFw8qshV3h58VzPI81NVImI61No78SA4fSc8fjwXl435pvu7H-JCpjcbskZesZOwdipu154h8xREhgLFFhfVnx9c3GF6zfEJMu-bkBpqmyUJEOSYTZVe0a-Wp0mCDCjhDZj4WHn0lZ3ugdWlcb3CJwToLC0aJdc1_kkRyYXYpkd4s" />
+                                        <span
+                                            class="absolute top-2 left-2 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-surface-container-highest text-on-surface font-label-md text-xs sm:text-label-md font-extrabold flex items-center justify-center shadow-md">
+                                            4
+                                        </span>
+                                        <span
+                                            class="absolute bottom-2 right-2 px-1.5 sm:px-2 py-0.5 rounded bg-inverse-surface/80 text-inverse-on-surface font-label-sm text-[11px] backdrop-blur-sm">
+                                            890C
+                                        </span>
+                                    </div>
+                                    <h4
+                                        class="font-headline-md text-sm sm:text-body-lg font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                        Đại Phụng Đả Canh Nhân</h4>
+                                    <p class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant truncate">Mại
+                                        Báo Tiểu Lang Quân</p>
+                                    <div
+                                        class="flex items-center justify-between mt-2 pt-2 border-t-0 bg-surface-container-low/50 -mx-2.5 -mb-2.5 sm:-mx-space-sm sm:-mb-space-sm px-2.5 sm:px-space-sm py-1.5 rounded-b-xl">
+                                        <div
+                                            class="flex items-center text-secondary-container text-label-sm font-semibold">
+                                            <span class="material-symbols-outlined text-[14px]"
+                                                style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="ml-0.5 text-xs sm:text-sm">4.91</span>
+                                        </div>
+                                        <span
+                                            class="font-metadata-badge text-[11px] text-on-surface-variant font-medium">Dã
+                                            Sử</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- SECTION 2: Mới Cập Nhật Liên Tục (Latest Updates List View) -->
+                        <section class="flex flex-col gap-space-md">
+                            <div class="flex items-center justify-between flex-wrap gap-2">
+                                <div class="flex items-center gap-space-sm">
+                                    <div class="w-2.5 h-6 bg-on-tertiary-container rounded-full"></div>
+                                    <h3
+                                        class="font-headline-lg text-lg sm:text-headline-lg text-primary font-bold tracking-tight">
+                                        Mới Cập Nhật Liên Tục</h3>
+                                    <span
+                                        class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-[11px] font-bold">
+                                        <span
+                                            class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+                                        Trực tiếp
+                                    </span>
+                                </div>
+                                <a class="font-label-md text-body-sm sm:text-label-md text-on-surface-variant hover:text-primary flex items-center gap-1 transition-colors whitespace-nowrap"
+                                    href="#">
+                                    <span>Xem toàn bộ cập nhật</span>
+                                    <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                                </a>
+                            </div>
+                            <!-- Structured Updates Feed with Safe Text Truncation -->
+                            <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden divide-y-0">
+                                <!-- Update Row 1 -->
+                                <div
+                                    class="flex items-center justify-between p-3 sm:p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer min-w-0 gap-3">
+                                    <div class="flex items-center gap-2.5 sm:gap-space-md min-w-0 flex-1">
+                                        <span
+                                            class="font-label-sm text-[11px] sm:text-[12px] px-2 py-0.5 sm:py-1 rounded bg-surface-container-high text-on-surface-variant shrink-0 font-medium">Tiên
+                                            Hiệp</span>
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5 sm:gap-space-sm">
+                                                <span
+                                                    class="font-headline-md text-sm sm:text-body-lg font-bold text-primary group-hover:text-secondary-container transition-colors truncate">
+                                                    Xích Tâm Tuần Thiên
+                                                </span>
+                                                <span
+                                                    class="font-metadata-badge text-metadata-badge bg-tertiary-fixed text-on-tertiary-fixed px-1.5 rounded shrink-0">VIP</span>
+                                            </div>
+                                            <p
+                                                class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant truncate">
+                                                Chương 1284: Nhất Kiếm Đoạn Trường Khách</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3 sm:gap-space-lg shrink-0 text-right">
+                                        <div class="hidden sm:block text-right">
+                                            <span class="font-body-sm text-body-sm text-on-surface">Tình Hà Dĩ
+                                                Thậm</span>
+                                            <p class="font-label-sm text-[11px] text-outline">3,450 chữ</p>
+                                        </div>
+                                        <span
+                                            class="font-label-sm text-xs sm:text-label-sm text-on-tertiary-container font-semibold whitespace-nowrap">
+                                            5 phút trước
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- Update Row 2 -->
+                                <div
+                                    class="flex items-center justify-between p-3 sm:p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer bg-surface-container-lowest/60 min-w-0 gap-3">
+                                    <div class="flex items-center gap-2.5 sm:gap-space-md min-w-0 flex-1">
+                                        <span
+                                            class="font-label-sm text-[11px] sm:text-[12px] px-2 py-0.5 sm:py-1 rounded bg-surface-container-high text-on-surface-variant shrink-0 font-medium">Huyền
+                                            Huyễn</span>
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5 sm:gap-space-sm">
+                                                <span
+                                                    class="font-headline-md text-sm sm:text-body-lg font-bold text-primary group-hover:text-secondary-container transition-colors truncate">
+                                                    Túc Mệnh Chi Hoàn
+                                                </span>
+                                                <span
+                                                    class="font-metadata-badge text-metadata-badge bg-secondary-fixed text-on-secondary-fixed px-1.5 rounded shrink-0">Hot</span>
+                                            </div>
+                                            <p
+                                                class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant truncate">
+                                                Chương 588: Lễ Tế Ma Nữ Dưới Trăng</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3 sm:gap-space-lg shrink-0 text-right">
+                                        <div class="hidden sm:block text-right">
+                                            <span class="font-body-sm text-body-sm text-on-surface">Ái Tiềm Thủy Đích Ô
+                                                Tặc</span>
+                                            <p class="font-label-sm text-[11px] text-outline">4,120 chữ</p>
+                                        </div>
+                                        <span
+                                            class="font-label-sm text-xs sm:text-label-sm text-on-tertiary-container font-semibold whitespace-nowrap">
+                                            12 phút trước
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- Update Row 3 -->
+                                <div
+                                    class="flex items-center justify-between p-3 sm:p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer min-w-0 gap-3">
+                                    <div class="flex items-center gap-2.5 sm:gap-space-md min-w-0 flex-1">
+                                        <span
+                                            class="font-label-sm text-[11px] sm:text-[12px] px-2 py-0.5 sm:py-1 rounded bg-surface-container-high text-on-surface-variant shrink-0 font-medium">Khoa
+                                            Huyễn</span>
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5 sm:gap-space-sm">
+                                                <span
+                                                    class="font-headline-md text-sm sm:text-body-lg font-bold text-primary group-hover:text-secondary-container transition-colors truncate">
+                                                    Thâm Không Bỉ Ngạn
+                                                </span>
+                                            </div>
+                                            <p
+                                                class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant truncate">
+                                                Chương 790: Tinh Không Viễn Chinh Hạm Đội</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3 sm:gap-space-lg shrink-0 text-right">
+                                        <div class="hidden sm:block text-right">
+                                            <span class="font-body-sm text-body-sm text-on-surface">Thần Đông</span>
+                                            <p class="font-label-sm text-[11px] text-outline">2,890 chữ</p>
+                                        </div>
+                                        <span
+                                            class="font-label-sm text-xs sm:text-label-sm text-outline font-medium whitespace-nowrap">
+                                            28 phút trước
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- Update Row 4 -->
+                                <div
+                                    class="flex items-center justify-between p-3 sm:p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer bg-surface-container-lowest/60 min-w-0 gap-3">
+                                    <div class="flex items-center gap-2.5 sm:gap-space-md min-w-0 flex-1">
+                                        <span
+                                            class="font-label-sm text-[11px] sm:text-[12px] px-2 py-0.5 sm:py-1 rounded bg-surface-container-high text-on-surface-variant shrink-0 font-medium">Đô
+                                            Thị</span>
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5 sm:gap-space-sm">
+                                                <span
+                                                    class="font-headline-md text-sm sm:text-body-lg font-bold text-primary group-hover:text-secondary-container transition-colors truncate">
+                                                    Ta Tại Trực Tiếp Giới Làm Thần Hào
+                                                </span>
+                                            </div>
+                                            <p
+                                                class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant truncate">
+                                                Chương 420: Chiếc Du Thuyền Trăm Triệu Đô</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3 sm:gap-space-lg shrink-0 text-right">
+                                        <div class="hidden sm:block text-right">
+                                            <span class="font-body-sm text-body-sm text-on-surface">Nhất Mộng Hoàng
+                                                Lương</span>
+                                            <p class="font-label-sm text-[11px] text-outline">2,410 chữ</p>
+                                        </div>
+                                        <span
+                                            class="font-label-sm text-xs sm:text-label-sm text-outline font-medium whitespace-nowrap">
+                                            45 phút trước
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- Update Row 5 -->
+                                <div
+                                    class="flex items-center justify-between p-3 sm:p-space-md hover:bg-surface-container-low transition-colors group cursor-pointer min-w-0 gap-3">
+                                    <div class="flex items-center gap-2.5 sm:gap-space-md min-w-0 flex-1">
+                                        <span
+                                            class="font-label-sm text-[11px] sm:text-[12px] px-2 py-0.5 sm:py-1 rounded bg-surface-container-high text-on-surface-variant shrink-0 font-medium">Hệ
+                                            Thống</span>
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5 sm:gap-space-sm">
+                                                <span
+                                                    class="font-headline-md text-sm sm:text-body-lg font-bold text-primary group-hover:text-secondary-container transition-colors truncate">
+                                                    Đại Phụng Thần Bộ
+                                                </span>
+                                            </div>
+                                            <p
+                                                class="font-body-sm text-xs sm:text-body-sm text-on-surface-variant truncate">
+                                                Chương 211: Bí Mật Dưới Giếng Sâu</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3 sm:gap-space-lg shrink-0 text-right">
+                                        <div class="hidden sm:block text-right">
+                                            <span class="font-body-sm text-body-sm text-on-surface">Bắc Minh Hữu
+                                                Ngư</span>
+                                            <p class="font-label-sm text-[11px] text-outline">3,050 chữ</p>
+                                        </div>
+                                        <span
+                                            class="font-label-sm text-xs sm:text-label-sm text-outline font-medium whitespace-nowrap">
+                                            1 giờ trước
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- ================= RIGHT COLUMN / SIDEBAR (4 Cols) ================= -->
+                    <div class="lg:col-span-4 flex flex-col gap-6 sm:gap-space-xl min-w-0">
+                        <!-- SIDEBAR WIDGET 1: Bảng Xếp Hạng Tuần (Weekly Leaderboard) -->
+                        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col">
+                            <div class="flex items-center justify-between mb-space-sm">
+                                <h3
+                                    class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-secondary-container text-[20px]"
+                                        style="font-variation-settings: 'FILL' 1;">military_tech</span>
+                                    Bảng Xếp Hạng Tuần
+                                </h3>
+                                <span class="font-label-sm text-label-sm text-outline">Tuần 42</span>
+                            </div>
+                            <!-- Leaderboard Tabs -->
+                            <div class="grid grid-cols-3 bg-surface-container-low p-1 rounded-lg mb-space-md">
+                                <button
+                                    class="py-1 text-center font-label-sm text-label-sm font-bold bg-surface-container-lowest text-primary rounded shadow-xs">Kim
+                                    Phiếu</button>
+                                <button
+                                    class="py-1 text-center font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors">Đọc
+                                    Nhiều</button>
+                                <button
+                                    class="py-1 text-center font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors">Yêu
+                                    Thích</button>
+                            </div>
+                            <!-- Leaderboard Ranked List (1 to 6) -->
+                            <div class="flex flex-col gap-space-xs">
+                                <!-- Rank #1 -->
+                                <div
+                                    class="p-2 rounded-lg bg-surface-container-low/70 flex items-center gap-space-sm group cursor-pointer hover:bg-surface-container-low transition-colors min-w-0">
+                                    <span
+                                        class="w-6 h-6 rounded-md bg-secondary-container text-on-primary font-label-md text-label-md font-extrabold flex items-center justify-center shrink-0">
+                                        1
+                                    </span>
+                                    <div
+                                        class="w-10 h-14 rounded overflow-hidden shrink-0 shadow-sm bg-surface-container">
+                                        <img class="w-full h-full object-cover"
+                                            data-alt="Novel cover thumbnail of Dai Phung Da Canh Nhan"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEemzMj5sG9qLj7HiBtKbj9ZHHQO0TbPjKo-q26EtBtppoCTPcmhni6GO6AQduVMZrr8__XXBMkBrYMAAjRw-KVZrQFKatI3De5iyP4pVcxzXHpfh7_a_dFmfcybTnE2yHZY0VQtesjJekjOKptxyRctOkj_2fQp3q9phMpD4ztnZ_9GdiYVNYnLOf97apOOxkRJsbC8ZIua423V0PG4ZbGCRZmD7pc7ZQq5jvekEkdCg0gwf4SNqs" />
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h4
+                                            class="font-label-md text-label-md font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                            Đại Phụng Đả Canh Nhân</h4>
+                                        <p class="font-body-sm text-[12px] text-on-surface-variant truncate">Mại Báo
+                                            Tiểu Lang Quân</p>
+                                        <span class="font-label-sm text-[11px] font-bold text-secondary-container">28.4K
+                                            Phiếu</span>
+                                    </div>
+                                </div>
+                                <!-- Rank #2 -->
+                                <div
+                                    class="p-2 rounded-lg flex items-center gap-space-sm group cursor-pointer hover:bg-surface-container-low transition-colors min-w-0">
+                                    <span
+                                        class="w-6 h-6 rounded-md bg-surface-container-highest text-on-surface font-label-md text-label-md font-extrabold flex items-center justify-center shrink-0">
+                                        2
+                                    </span>
+                                    <div class="flex-1 min-w-0">
+                                        <h4
+                                            class="font-label-md text-label-md font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                            Túc Mệnh Chi Hoàn</h4>
+                                        <p class="font-body-sm text-[12px] text-on-surface-variant truncate">Ái Tiềm
+                                            Thủy Đích Ô Tặc</p>
+                                    </div>
+                                    <span
+                                        class="font-label-sm text-[12px] font-semibold text-outline shrink-0">21.8K</span>
+                                </div>
+                                <!-- Rank #3 -->
+                                <div
+                                    class="p-2 rounded-lg flex items-center gap-space-sm group cursor-pointer hover:bg-surface-container-low transition-colors min-w-0">
+                                    <span
+                                        class="w-6 h-6 rounded-md bg-surface-container-highest text-on-surface font-label-md text-label-md font-extrabold flex items-center justify-center shrink-0">
+                                        3
+                                    </span>
+                                    <div class="flex-1 min-w-0">
+                                        <h4
+                                            class="font-label-md text-label-md font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                            Trường Ninh Đế Quốc</h4>
+                                        <p class="font-body-sm text-[12px] text-on-surface-variant truncate">Tri Bạch
+                                        </p>
+                                    </div>
+                                    <span
+                                        class="font-label-sm text-[12px] font-semibold text-outline shrink-0">17.2K</span>
+                                </div>
+                                <!-- Rank #4 -->
+                                <div
+                                    class="p-2 rounded-lg flex items-center gap-space-sm group cursor-pointer hover:bg-surface-container-low transition-colors min-w-0">
+                                    <span
+                                        class="w-6 h-6 rounded-md text-outline font-label-md text-label-md font-bold flex items-center justify-center shrink-0">
+                                        4
+                                    </span>
+                                    <div class="flex-1 min-w-0">
+                                        <h4
+                                            class="font-label-md text-label-md font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                            Mục Thần Ký</h4>
+                                        <p class="font-body-sm text-[12px] text-on-surface-variant truncate">Trạch Trư
+                                        </p>
+                                    </div>
+                                    <span
+                                        class="font-label-sm text-[12px] font-medium text-outline shrink-0">14.9K</span>
+                                </div>
+                                <!-- Rank #5 -->
+                                <div
+                                    class="p-2 rounded-lg flex items-center gap-space-sm group cursor-pointer hover:bg-surface-container-low transition-colors min-w-0">
+                                    <span
+                                        class="w-6 h-6 rounded-md text-outline font-label-md text-label-md font-bold flex items-center justify-center shrink-0">
+                                        5
+                                    </span>
+                                    <div class="flex-1 min-w-0">
+                                        <h4
+                                            class="font-label-md text-label-md font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                            Đạo Quỷ Dị Tiên</h4>
+                                        <p class="font-body-sm text-[12px] text-on-surface-variant truncate">Cửu Hạt Chi
+                                            Hồ</p>
+                                    </div>
+                                    <span
+                                        class="font-label-sm text-[12px] font-medium text-outline shrink-0">12.1K</span>
+                                </div>
+                                <!-- Rank #6 -->
+                                <div
+                                    class="p-2 rounded-lg flex items-center gap-space-sm group cursor-pointer hover:bg-surface-container-low transition-colors min-w-0">
+                                    <span
+                                        class="w-6 h-6 rounded-md text-outline font-label-md text-label-md font-bold flex items-center justify-center shrink-0">
+                                        6
+                                    </span>
+                                    <div class="flex-1 min-w-0">
+                                        <h4
+                                            class="font-label-md text-label-md font-bold text-primary truncate group-hover:text-secondary-container transition-colors">
+                                            Vạn Cổ Đệ Nhất Tông</h4>
+                                        <p class="font-body-sm text-[12px] text-on-surface-variant truncate">Giang Hồ
+                                            Tái Kiến</p>
+                                    </div>
+                                    <span
+                                        class="font-label-sm text-[12px] font-medium text-outline shrink-0">10.5K</span>
+                                </div>
+                            </div>
+                            <a class="mt-space-sm pt-space-xs text-center font-label-sm text-label-sm font-semibold text-primary hover:text-secondary-container transition-colors block"
+                                href="#">
+                                Xem toàn bộ Top 100 →
+                            </a>
+                        </div>
+                        <!-- SIDEBAR WIDGET 2: Cộng Đồng & Thảo Luận Nóng -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+                            <div class="flex items-center justify-between pb-1">
+                                <h3
+                                    class="font-headline-md text-body-lg font-bold text-primary flex items-center gap-1.5">
+                                    <span class="material-symbols-outlined text-outline text-[18px]">forum</span>
+                                    Góc Thảo Luận Sôi Nổi
+                                </h3>
+                                <span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+                            </div>
+                            <div class="flex flex-col gap-space-xs">
+                                <a class="p-2 rounded-lg hover:bg-surface-container-low transition-colors block group"
+                                    href="#">
+                                    <p
+                                        class="font-label-md text-label-md font-semibold text-primary group-hover:text-secondary-container line-clamp-2">
+                                        [Bàn Luận] Cái kết của Mục Thần Ký: Trạch Trư đã thực sự khai mở đại đạo?
+                                    </p>
+                                    <div class="flex items-center gap-2 mt-1 font-body-sm text-[11px] text-outline">
+                                        <span>Diễn đàn Tiên Hiệp</span>
+                                        <span>•</span>
+                                        <span>86 phản hồi</span>
+                                    </div>
+                                </a>
+                                <a class="p-2 rounded-lg hover:bg-surface-container-low transition-colors block group"
+                                    href="#">
+                                    <p
+                                        class="font-label-md text-label-md font-semibold text-primary group-hover:text-secondary-container line-clamp-2">
+                                        Hỏi đáp về quy chế ký hợp đồng bản quyền V-Novel Studio tháng 11/2024
+                                    </p>
+                                    <div class="flex items-center gap-2 mt-1 font-body-sm text-[11px] text-outline">
+                                        <span>Góc Tác Giả</span>
+                                        <span>•</span>
+                                        <span>142 phản hồi</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- SIDEBAR WIDGET 3: Author Studio Promo Banner -->
+                        <div
+                            class="bg-gradient-to-br from-primary-container via-surface-container-highest to-surface-container rounded-xl p-space-lg text-on-primary shadow-md relative overflow-hidden flex flex-col justify-between">
+                            <div class="relative z-10">
+                                <span
+                                    class="font-metadata-badge text-metadata-badge uppercase tracking-wider text-secondary-fixed-dim font-bold block mb-1">Dành
+                                    Cho Nhà Văn &amp; Tác Giả</span>
+                                <h4
+                                    class="font-headline-md text-headline-md font-extrabold text-on-primary mb-space-xs leading-snug">
+                                    Gia nhập V-Novel Studio
+                                </h4>
+                                <p
+                                    class="font-body-sm text-body-sm text-on-primary-container mb-space-md leading-relaxed">
+                                    Biến đam mê văn chương thành thu nhập thực tế. Nhuận bút hấp dẫn, bảo hộ tác quyền
+                                    minh bạch cùng hơn 2 triệu độc giả chờ đón.
+                                </p>
+                                <a class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-bold hover:bg-secondary-fixed transition-colors shadow-sm"
+                                    href="#">
+                                    <span class="material-symbols-outlined text-[18px]">drive_file_rename_outline</span>
+                                    <span>Bắt Đầu Sáng Tác</span>
+                                </a>
+                            </div>
+                            <!-- Decorative Ink & Pen Visual Art -->
+                            <div class="absolute -right-6 -bottom-6 opacity-15 pointer-events-none">
+                                <span class="material-symbols-outlined text-[140px] text-on-primary">auto_stories</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="w-full bg-surface-container-low text-on-surface-variant border-t border-surface-container-high">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-space-xl">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div class="sm:col-span-2 md:col-span-4 lg:col-span-2 flex flex-col lg:pr-space-lg">
+                    <div class="flex items-center gap-space-sm mb-space-sm"><img alt="V-Novel"
+                            class="h-7 w-auto object-contain"
+                            src="https://lh3.googleusercontent.com/aida/AEtjO1UB9eRWQ8tRzkM5IlujV1-Ms-jPAXe2ZFg3SmjMNd-qTTxNiqlS73liRCsPAYWoufPqKJRBvH0PFoBUuyqtbYqef8tmA3K6USjof3Q3V5LqVetyJ_J9yQQKGq8O_3iD85-XLFrR78aEcElz6vHhQj_h6TN6iH22dZdEDTDhFXu_vzKbA65sbHVB2O6Ie-J3n0V5NO34d-Z75m3Z0-f45Q8xSK2PyRCPkVwOi4J8Og7puEMirnbTrgoxWQ" /><span
+                            class="font-headline-md text-headline-md text-primary tracking-tight">V-Novel</span></div>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-space-md">Nền tảng đọc
+                        truyện chữ, sáng tác trực tuyến hàng đầu Việt Nam. Tận hưởng không gian đọc văn học tối giản,
+                        tôn vinh tác quyền và nâng tầm trải nghiệm độc giả.</p>
+                    <div class="flex items-center gap-space-sm text-outline"><span
+                            class="material-symbols-outlined text-[20px]">auto_stories</span><span
+                            class="font-label-sm text-label-sm text-on-surface-variant">Hơn 50,000+ tác phẩm đã xuất
+                            bản</span></div>
+                </div>
+                <div>
+                    <h4 class="font-headline-md text-body-lg text-primary font-bold mb-space-md">Thể Loại Nổi Bật</h4>
+                    <ul class="space-y-space-xs font-body-md text-body-md">
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="the-loai"
+                                href="#">Tiên Hiệp &amp; Tu Chân</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="the-loai"
+                                href="#">Huyền Huyễn Kỳ Bí</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="the-loai"
+                                href="#">Đô Thị Dị Năng</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="the-loai"
+                                href="#">Khoa Huyễn &amp; Tương Lai</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="the-loai"
+                                href="#">Dã Sử Quân Sự</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-headline-md text-body-lg text-primary font-bold mb-space-md">Dành Cho Tác Giả</h4>
+                    <ul class="space-y-space-xs font-body-md text-body-md">
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="sang-tac"
+                                href="#">V-Novel Studio</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="sang-tac"
+                                href="#">Chính Sách Nhuận Bút</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="sang-tac"
+                                href="#">Hướng Dẫn Xuất Bản</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="sang-tac"
+                                href="#">Ký Hợp Đồng Tác Quyền</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="dien-dan"
+                                href="#">Góc Trao Đổi Nghiệp Vụ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-headline-md text-body-lg text-primary font-bold mb-space-md">Quy Định &amp; Hỗ Trợ
+                    </h4>
+                    <ul class="space-y-space-xs font-body-md text-body-md">
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors"
+                                data-path="dieu-khoan-su-dung" href="#">Điều Khoản Sử Dụng</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors"
+                                data-path="chinh-sach-bao-mat" href="#">Chính Sách Bảo Mật</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors"
+                                data-path="ban-quyen-khieu-nai" href="#">Bản Quyền &amp; Khiếu Nại</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="lien-he"
+                                href="#">Trung Tâm Hỗ Trợ</a></li>
+                        <li class="py-0.5"><a class="hover:text-on-surface transition-colors" data-path="lien-he"
+                                href="#">Liên Hệ Hợp Tác</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="mt-8 sm:mt-space-xl pt-6 sm:pt-space-lg border-t border-surface-container-high flex flex-col md:flex-row items-center justify-between gap-space-md font-body-sm text-body-sm text-outline">
+                <p class="text-center md:text-left">© 2024 V-Novel Platform. Bảo lưu mọi quyền. Nội dung được bảo hộ bản
+                    quyền số.</p>
+                <div class="flex items-center gap-4 sm:gap-space-lg"><a class="hover:text-on-surface transition-colors"
+                        data-path="dieu-khoan-su-dung" href="#">Điều khoản</a><a
+                        class="hover:text-on-surface transition-colors" data-path="chinh-sach-bao-mat" href="#">Bảo
+                        mật</a><a class="hover:text-on-surface transition-colors" data-path="ban-quyen-khieu-nai"
+                        href="#">Bản quyền</a></div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

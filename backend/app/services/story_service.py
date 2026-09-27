@@ -32,3 +32,5 @@ def list_public_stories(db: Session, page: int, page_size: int) -> tuple[list[St
     total = db.scalar(total_statement) or 0
     stories = list(db.scalars(stories_statement))
     return stories, total
+
+

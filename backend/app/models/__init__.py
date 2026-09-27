@@ -5,6 +5,7 @@ from app.models.comment import Comment, CommentBase, CommentIn, CommentOut
 from app.models.enums import (
     AccountStatus,
     CommentStatus,
+    HomepageSlot,
     NotificationType,
     PublicationStatus,
     ReportStatus,
@@ -13,6 +14,13 @@ from app.models.enums import (
     Visibility,
 )
 from app.models.genre import Genre, GenreBase, GenreIn, GenreOut
+from app.models.homepage_story_slot import (
+    HomepageOut,
+    HomepageStorySlot,
+    HomepageStorySlotBase,
+    HomepageStorySlotIn,
+    HomepageStorySlotOut,
+)
 from app.models.notification import Notification, NotificationBase, NotificationIn, NotificationOut
 from app.models.rating import Rating, RatingBase, RatingIn, RatingOut
 from app.models.reading_progress import ReadingProgress, ReadingProgressBase, ReadingProgressIn, ReadingProgressOut

@@ -67,6 +67,22 @@ CREATE TABLE stories (
   )
 );
 
+-- Manually curated homepage content. HERO is fixed at position 1; EDITOR_PICK
+-- can contain multiple stories ordered by position.
+CREATE TABLE homepage_story_slots (
+  slot VARCHAR(20) NOT NULL,
+  position SMALLINT NOT NULL DEFAULT 1,
+  story_id UUID NOT NULL REFERENCES stories(id) ON DELETE CASCADE,
+  selected_by UUID REFERENCES users(id) ON DELETE SET NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY (slot, position),
+  UNIQUE (slot, story_id),
+  CONSTRAINT homepage_story_slots_slot_check CHECK (slot IN ('HERO', 'EDITOR_PICK')),
+  CONSTRAINT homepage_story_slots_position_positive CHECK (position > 0),
+  CONSTRAINT homepage_story_slots_hero_position CHECK (slot <> 'HERO' OR position = 1)
+);
+
 CREATE TABLE story_genres (
   story_id UUID NOT NULL REFERENCES stories(id) ON DELETE CASCADE,
   genre_id UUID NOT NULL REFERENCES genres(id) ON DELETE RESTRICT,
@@ -224,6 +240,7 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER users_set_updated_at BEFORE UPDATE ON users FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 CREATE TRIGGER genres_set_updated_at BEFORE UPDATE ON genres FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 CREATE TRIGGER stories_set_updated_at BEFORE UPDATE ON stories FOR EACH ROW EXECUTE FUNCTION set_updated_at();
+CREATE TRIGGER homepage_story_slots_set_updated_at BEFORE UPDATE ON homepage_story_slots FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 CREATE TRIGGER chapters_set_updated_at BEFORE UPDATE ON chapters FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 CREATE TRIGGER comments_set_updated_at BEFORE UPDATE ON comments FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 CREATE TRIGGER ratings_set_updated_at BEFORE UPDATE ON ratings FOR EACH ROW EXECUTE FUNCTION set_updated_at();

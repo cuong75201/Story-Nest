@@ -4,11 +4,17 @@ import './index.css'
 import { createBrowserRouter } from 'react-router'
 import UserLayout from './layouts/user/layout'
 import { RouterProvider } from 'react-router/dom'
-
+import  UserHomePage from "./pages/home/home.tsx"
 const router = createBrowserRouter([
   {
     path:"/",
     Component:UserLayout,
+    children:[
+      {
+        index: true,
+        Component: UserHomePage
+      }
+    ]
 
   }
 ])

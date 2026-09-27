@@ -31,6 +31,11 @@ class PublicationStatus(str, enum.Enum):
     REMOVED = "REMOVED"
 
 
+class HomepageSlot(str, enum.Enum):
+    HERO = "HERO"
+    EDITOR_PICK = "EDITOR_PICK"
+
+
 class CommentStatus(str, enum.Enum):
     ACTIVE = "ACTIVE"
     HIDDEN = "HIDDEN"
