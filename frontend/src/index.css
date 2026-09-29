@@ -56,6 +56,13 @@
   --radius-xl: 0.75rem;
   --radius-full: 9999px;
 
+  --shadow-toast:
+    0 10px 30px -4px rgba(15, 23, 42, 0.08),
+    0 4px 12px -2px rgba(15, 23, 42, 0.03);
+  --shadow-toast-lg:
+    0 20px 40px -8px rgba(15, 23, 42, 0.12),
+    0 8px 16px -4px rgba(15, 23, 42, 0.04);
+
   --spacing-space-xl: 2.5rem;
   --spacing-space-sm: 0.5rem;
   --spacing-gutter: 1rem;
@@ -161,4 +168,12 @@ main > :first-child {
 
 main > :last-child {
   margin-bottom: 0 !important;
+}
+
+   @keyframes shrinkWidth {
+      from { width: 100%; }
+      to { width: 0%; }
+    }
+ .animate-progress {
+  animation: shrinkWidth 5s linear forwards;
 }
