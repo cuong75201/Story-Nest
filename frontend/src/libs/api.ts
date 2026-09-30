@@ -45,6 +45,7 @@ axiosInstance.interceptors.response.use(
 
     const apiError: ApiResponse<null> = responseData ?? {
       status: false,
+      status_code: httpStatus ?? 0,
       message: error.message || 'API request failed',
       data: null,
       error: {

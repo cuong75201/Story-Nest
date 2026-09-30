@@ -14,14 +14,36 @@ class ApiError(BaseModel):
 
 class ApiResponse(BaseModel, Generic[T]):
     status: bool
+    status_code: int
     message: str
     data: T | None = None
     error: ApiError | None = None
 
 
-def success_response(data: T | None = None, message: str = "Success") -> ApiResponse[T]:
-    return ApiResponse(status=True, message=message, data=data, error=None)
+def success_response(
+    data: T | None = None,
+    message: str = "Success",
+    status_code: int = 200,
+) -> ApiResponse[T]:
+    return ApiResponse(
+        status=True,
+        status_code=status_code,
+        message=message,
+        data=data,
+        error=None,
+    )
 
 
-def error_response(message: str, code: str = "REQUEST_FAILED", details: Any | None = None) -> ApiResponse[None]:
-    return ApiResponse(status=False, message=message, data=None, error=ApiError(code=code, details=details))
+def error_response(
+    message: str,
+    code: str = "REQUEST_FAILED",
+    details: Any | None = None,
+    status_code: int = 400,
+) -> ApiResponse[None]:
+    return ApiResponse(
+        status=False,
+        status_code=status_code,
+        message=message,
+        data=None,
+        error=ApiError(code=code, details=details),
+    )

@@ -3,7 +3,7 @@
 from fastapi import APIRouter, Query
 
 from app.dependencies import SessionDep
-from app.models.story import StoryCountOut, StoryListOut, StoryOut
+from app.models.story import StoryCountOut, StoryListOut
 from app.schemas import ApiResponse, success_response
 from app.services.story_service import count_stories, list_public_stories
 
@@ -18,10 +18,9 @@ def get_stories(
 ) -> ApiResponse[StoryListOut]:
     """Get a paginated list of public, published stories."""
     stories, total = list_public_stories(db, page, page_size)
-    story_items = [StoryOut.model_validate(story) for story in stories]
     data = StoryListOut.model_validate(
         {
-            "items": story_items,
+            "items": stories,
             "total": total,
             "page": page,
             "page_size": page_size,

@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, status
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -10,6 +11,16 @@ from app.routers.stories import router as stories_router
 from app.schemas import ApiResponse, success_response
 
 app = FastAPI(title="Story Nest API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 register_exception_handlers(app)
 app.include_router(stories_router)
 app.include_router(genres_router)

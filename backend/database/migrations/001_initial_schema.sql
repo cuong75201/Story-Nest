@@ -86,8 +86,13 @@ CREATE TABLE homepage_story_slots (
 CREATE TABLE story_genres (
   story_id UUID NOT NULL REFERENCES stories(id) ON DELETE CASCADE,
   genre_id UUID NOT NULL REFERENCES genres(id) ON DELETE RESTRICT,
+  is_primary BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (story_id, genre_id)
 );
+
+CREATE UNIQUE INDEX story_genres_one_primary_per_story
+  ON story_genres (story_id)
+  WHERE is_primary = TRUE;
 
 CREATE TABLE chapters (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

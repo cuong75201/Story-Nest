@@ -99,6 +99,7 @@ Table stories {
 Table story_genres {
   story_id uuid [not null]
   genre_id uuid [not null]
+  is_primary boolean [not null, default: false, note: 'At most one primary genre per story']
 
   indexes {
     (story_id, genre_id) [pk]

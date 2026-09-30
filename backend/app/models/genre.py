@@ -29,6 +29,13 @@ class GenreIn(GenreBase):
     is_active: bool = True
 
 
+class GenreSummaryOut(SchemaOut):
+    id: uuid.UUID
+    name: str
+    slug: str
+    is_primary: bool
+
+
 class GenreOut(GenreBase):
     id: uuid.UUID
     is_active: bool

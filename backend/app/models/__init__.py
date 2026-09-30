@@ -13,7 +13,7 @@ from app.models.enums import (
     UserRole,
     Visibility,
 )
-from app.models.genre import Genre, GenreBase, GenreIn, GenreOut
+from app.models.genre import Genre, GenreBase, GenreIn, GenreOut, GenreSummaryOut
 from app.models.homepage_story_slot import (
     HomepageOut,
     HomepageStorySlot,

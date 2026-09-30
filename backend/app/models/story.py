@@ -1,5 +1,6 @@
 import uuid
 from datetime import datetime
+from decimal import Decimal
 from typing import Any
 
 from pydantic import Field
@@ -10,6 +11,7 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.database import Base
 from app.models.base import SchemaOut, TimestampMixin
 from app.models.enums import PublicationStatus, StoryState, Visibility
+from app.models.genre import GenreSummaryOut
 
 
 class Story(TimestampMixin, Base):
@@ -48,10 +50,52 @@ class StoryIn(StoryBase):
 class StoryOut(StoryBase):
     id: uuid.UUID
     owner_id: uuid.UUID
+    author_name: str
+    average_rating: float | None
+    rating_count: int
+    view_count: int
+    chapter_count: int
+    genres: list[GenreSummaryOut] = Field(default_factory=list)
     publication_status: PublicationStatus
     published_at: datetime | None
     created_at: datetime
     updated_at: datetime
+
+
+def to_story_out(
+    story: Story,
+    author_name: str,
+    average_rating: Decimal | None,
+    rating_count: int | None,
+    view_count: int | None,
+    chapter_count: int | None,
+    genres: list[GenreSummaryOut],
+) -> StoryOut:
+    """Combine a story row with its author and rating aggregates."""
+    return StoryOut.model_validate(
+        {
+            "id": story.id,
+            "owner_id": story.owner_id,
+            "author_name": author_name,
+            "average_rating": (
+                float(average_rating) if average_rating is not None else None
+            ),
+            "rating_count": rating_count or 0,
+            "view_count": view_count or 0,
+            "chapter_count": chapter_count or 0,
+            "genres": genres,
+            "title": story.title,
+            "slug": story.slug,
+            "summary": story.summary,
+            "cover_image_url": story.cover_image_url,
+            "visibility": story.visibility,
+            "state": story.state,
+            "publication_status": story.publication_status,
+            "published_at": story.published_at,
+            "created_at": story.created_at,
+            "updated_at": story.updated_at,
+        }
+    )
 
 
 class StoryCountOut(SchemaOut):

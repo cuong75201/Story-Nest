@@ -26,6 +26,7 @@ erDiagram
     STORY_GENRES {
         uuid story_id PK, FK
         uuid genre_id PK, FK
+        boolean is_primary
     }
     CHAPTERS {
         uuid id PK
@@ -123,7 +124,7 @@ erDiagram
 
 ## Ghi chú
 
-- `STORY_GENRES` là bảng trung gian cho quan hệ nhiều-nhiều giữa truyện và thể loại.
+- `STORY_GENRES` là bảng trung gian cho quan hệ nhiều-nhiều giữa truyện và thể loại; `is_primary` đánh dấu thể loại chính và mỗi truyện có tối đa một thể loại chính.
 - `STORY_FOLLOWS`, `STORY_FAVORITES`, `USER_FOLLOWS` và `RATINGS` dùng khóa chính ghép để không tạo tương tác trùng lặp.
 - Một `COMMENTS` phải thuộc đúng một trong hai đối tượng: `STORIES` hoặc `CHAPTERS`; `parent_id` hỗ trợ bình luận trả lời.
 - Một `REPORTS` phải báo cáo đúng một trong ba đối tượng: truyện, chương hoặc bình luận.

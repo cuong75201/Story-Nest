@@ -14,6 +14,7 @@ async def http_exception_handler(_: Request, exc: HTTPException) -> JSONResponse
         message=detail.get("message", str(exc.detail)),
         code=detail.get("code", "REQUEST_FAILED"),
         details=detail.get("details"),
+        status_code=exc.status_code,
     )
     return JSONResponse(status_code=exc.status_code, content=response.model_dump())
 
@@ -24,12 +25,17 @@ async def request_validation_exception_handler(_: Request, exc: RequestValidatio
         message="Request validation failed.",
         code="VALIDATION_ERROR",
         details=exc.errors(),
+        status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
     )
     return JSONResponse(status_code=status.HTTP_422_UNPROCESSABLE_CONTENT, content=jsonable_encoder(response.model_dump()))
 
 
 async def unexpected_exception_handler(_: Request, __: Exception) -> JSONResponse:
-    response = error_response("An unexpected server error occurred.", "INTERNAL_SERVER_ERROR")
+    response = error_response(
+        "An unexpected server error occurred.",
+        "INTERNAL_SERVER_ERROR",
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+    )
     return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content=response.model_dump())
 
 
