@@ -9,6 +9,8 @@ from app.models.story_statistics import StoryStatistics
 from app.models.user import User
 from app.services.genre_service import get_story_genres
 
+EDITOR_PICK_LIMIT = 2
+
 
 def list_homepage_story(db: Session) -> HomepageOut:
     """Return the public hero and ordered editor picks for the homepage."""
@@ -68,7 +70,7 @@ def list_homepage_story(db: Session) -> HomepageOut:
         )
         if slot == HomepageSlot.HERO:
             hero = story_out
-        elif slot == HomepageSlot.EDITOR_PICK:
+        elif slot == HomepageSlot.EDITOR_PICK and len(editor_pick) < EDITOR_PICK_LIMIT:
             editor_pick.append(story_out)
 
     return HomepageOut(hero=hero, editor_pick=editor_pick)

@@ -39,3 +39,10 @@ export type StoryOut = {
   created_at: string;
   updated_at: string;
 }
+
+export type StoryListOut = {
+  items: StoryOut[];
+  total: number;
+  page: number;
+  page_size: number;
+};

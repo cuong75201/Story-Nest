@@ -2,8 +2,8 @@ import { useToast } from "@/context/toast.context";
 import type { Response as ApiResponse } from "@/libs/response";
 import { useState } from "react";
 
-const useCallApi = () => {
-  const [loading, setLoading] = useState(false);
+const useCallApi = (initialLoading = false) => {
+  const [loading, setLoading] = useState(initialLoading);
   const { showToast } = useToast();
 
   const execute =
